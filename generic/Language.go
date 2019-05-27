@@ -3,8 +3,8 @@ package generic
 type Language string
 
 const (
-	SCALA  = "SCALA"
-	PYTHON = "PYTHON"
-	SQL    = "SQL"
-	R      = "R"
+	LanguageScala  = "SCALA"
+	LanguagePython = "PYTHON"
+	LanguageSql    = "SQL"
+	LanguageR      = "R"
 )

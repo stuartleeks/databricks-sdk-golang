@@ -3,8 +3,8 @@ package generic
 type RunResultState string
 
 const (
-	SUCCESS  = "SUCCESS"
-	FAILED   = "FAILED"
-	TIMEDOUT = "TIMEDOUT"
-	CANCELED = "CANCELED"
+	RunResultStateSuccess  = "SUCCESS"
+	RunResultStateFailed   = "FAILED"
+	RunResultStateTimedout = "TIMEDOUT"
+	RunResultStateCanceled = "CANCELED"
 )

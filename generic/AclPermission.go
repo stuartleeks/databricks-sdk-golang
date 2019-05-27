@@ -3,7 +3,7 @@ package generic
 type AclPermission string
 
 const (
-	READ   = "READ"
-	WRITE  = "WRITE"
-	MANAGE = "MANAGE"
+	AclPermissionRead   = "READ"
+	AclPermissionWrite  = "WRITE"
+	AclPermissionManage = "MANAGE"
 )

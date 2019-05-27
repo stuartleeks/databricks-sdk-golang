@@ -3,8 +3,8 @@ package generic
 type ExportFormat string
 
 const (
-	SOURCE  = "SOURCE"
-	HTML    = "HTML"
-	JUPYTER = "JUPYTER"
-	DBC     = "DBC"
+	ExportFormatSource  = "SOURCE"
+	ExportFormatHtml    = "HTML"
+	ExportFormatJupyter = "JUPYTER"
+	ExportFormatDbc     = "DBC"
 )

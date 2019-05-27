@@ -3,10 +3,10 @@ package generic
 type LibraryInstallStatus string
 
 const (
-	PENDING              = "PENDING"
-	RESOLVING            = "RESOLVING"
-	INSTALLING           = "INSTALLING"
-	INSTALLED            = "INSTALLED"
-	FAILED               = "FAILED"
-	UNINSTALL_ON_RESTART = "UNINSTALL_ON_RESTART"
+	LibraryInstallStatusPending            = "PENDING"
+	LibraryInstallStatusResolving          = "RESOLVING"
+	LibraryInstallStatusInstalling         = "INSTALLING"
+	LibraryInstallStatusInstalled          = "INSTALLED"
+	LibraryInstallStatusFailed             = "FAILED"
+	LibraryInstallStatusUninstallOnRestart = "UNINSTALL_ON_RESTART"
 )

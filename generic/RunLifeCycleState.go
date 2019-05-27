@@ -4,10 +4,10 @@ package generic
 type RunLifeCycleState string
 
 const (
-	PENDING        = "PENDING"
-	RUNNING        = "RUNNING"
-	TERMINATING    = "TERMINATING"
-	TERMINATED     = "TERMINATED"
-	SKIPPED        = "SKIPPED"
-	INTERNAL_ERROR = "INTERNAL_ERROR"
+	RunLifeCycleStatePending       = "PENDING"
+	RunLifeCycleStateRunning       = "RUNNING"
+	RunLifeCycleStateTerminating   = "TERMINATING"
+	RunLifeCycleStateTerminated    = "TERMINATED"
+	RunLifeCycleStateSkipped       = "SKIPPED"
+	RunLifeCycleStateInternalError = "INTERNAL_ERROR"
 )
