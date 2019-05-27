@@ -1,6 +1,5 @@
 package generic
 
-// ClusterInfo (Describe all of the metadata about a cluster)
 type ClusterInfo struct {
 	NumWorkers             int32            `json:"num_workers,omitempty"`
 	AutoScale              AutoScale        `json:"autoscale,omitempty"`
