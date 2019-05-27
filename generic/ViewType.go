@@ -1,4 +1,8 @@
 package generic
 
-type ViewType struct {
-}
+type ViewType string
+
+const (
+	NOTEBOOK  = "NOTEBOOK"
+	DASHBOARD = "DASHBOARD"
+)

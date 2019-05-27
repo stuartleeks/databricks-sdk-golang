@@ -1,4 +1,9 @@
 package generic
 
-type ViewsToExport struct {
-}
+type ViewsToExport string
+
+const (
+	CODE       = "CODE"
+	DASHBOARDS = "DASHBOARDS"
+	ALL        = "ALL"
+)

@@ -1,4 +1,9 @@
 package generic
 
-type TriggerType struct {
-}
+type TriggerType string
+
+const (
+	PERIODIC = "PERIODIC"
+	ONE_TIME = "ONE_TIME"
+	RETRY    = "RETRY"
+)
