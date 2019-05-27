@@ -1,6 +1,5 @@
 package generic
 
-// RunLifeCycleState (The life cycle state of a run.)
 type RunLifeCycleState string
 
 const (

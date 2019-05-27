@@ -5,6 +5,6 @@ type Language string
 const (
 	LanguageScala  = "SCALA"
 	LanguagePython = "PYTHON"
-	LanguageSql    = "SQL"
+	LanguageSQL    = "SQL"
 	LanguageR      = "R"
 )
