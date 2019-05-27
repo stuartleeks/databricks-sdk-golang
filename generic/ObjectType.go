@@ -3,7 +3,7 @@ package generic
 type ObjectType string
 
 const (
-	NOTEBOOK = "NOTEBOOK"
+	NOTEBOOK  = "NOTEBOOK"
 	DIRECTORY = "DIRECTORY"
-	LIBRARY = "LIBRARY"
+	LIBRARY   = "LIBRARY"
 )
