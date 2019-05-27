@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type JobSettings struct {
 	ExistingClusterID      string                `json:"existing_cluster_id,omitempty"`

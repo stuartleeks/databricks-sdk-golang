@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type ViewItem struct {
 	Content string   `json:"content,omitempty"`

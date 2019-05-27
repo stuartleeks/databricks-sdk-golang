@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type FileInfo struct {
 	Path     string `json:"path,omitempty"`

@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type Library struct {
 	Jar   string            `json:"jar,omitempty"`

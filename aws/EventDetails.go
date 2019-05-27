@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type EventDetails struct {
 	CurrentNumWorkers   int32             `json:"current_num_workers,omitempty"`

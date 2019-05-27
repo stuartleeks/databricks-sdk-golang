@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type ClusterTag struct {
 	Key   string `json:"key,omitempty"`

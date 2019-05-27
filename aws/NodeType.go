@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type NodeType struct {
 	NodeTypeID     string                       `json:"node_type_id,omitempty"`

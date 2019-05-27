@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type PythonPyPiLibrary struct {
 	Package string `json:"package,omitempty"`

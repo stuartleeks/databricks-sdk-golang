@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type JobTask struct {
 	NotebookTask    NotebookTask    `json:"notebook_task,omitempty"`

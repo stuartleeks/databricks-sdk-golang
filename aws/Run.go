@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type Run struct {
 	JobID                int64           `json:"job_id,omitempty"`

@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type PublicTokenInfo struct {
 	TokenID      string `json:"token_id,omitempty"`

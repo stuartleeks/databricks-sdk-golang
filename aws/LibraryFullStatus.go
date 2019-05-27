@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type LibraryFullStatus struct {
 	Library                 Library              `json:"library,omitempty"`

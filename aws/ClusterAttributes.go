@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type ClusterAttributes struct {
 	ClusterName            string           `json:"cluster_name,omitempty"`

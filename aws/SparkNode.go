@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type SparkNode struct {
 	PrivateIP         string                 `json:"private_ip,omitempty"`

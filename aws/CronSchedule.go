@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type CronSchedule struct {
 	QuartzCronExpression string `json:"quartz_cron_expression,omitempty"`

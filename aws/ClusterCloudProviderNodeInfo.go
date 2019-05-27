@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type ClusterCloudProviderNodeInfo struct {
 	Status             ClusterCloudProviderNodeStatus `json:"status,omitempty"`

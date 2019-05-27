@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type InitScriptInfo struct {
 	Dbfs DbfsStorageInfo `json:"dbfs,omitempty"`

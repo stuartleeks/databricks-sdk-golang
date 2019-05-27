@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type ObjectInfo struct {
 	ObjectType ObjectType `json:"object_type,omitempty"`

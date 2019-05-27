@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type ClusterLogConf struct {
 	Dbfs DbfsStorageInfo `json:"dbfs,omitempty"`

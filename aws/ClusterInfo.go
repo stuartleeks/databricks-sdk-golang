@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type ClusterInfo struct {
 	NumWorkers             int32            `json:"num_workers,omitempty"`

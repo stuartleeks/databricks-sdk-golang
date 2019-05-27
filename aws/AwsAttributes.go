@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type AwsAttributes struct {
 	FirstOnDemand       int32           `json:"first_on_demand,omitempty"`

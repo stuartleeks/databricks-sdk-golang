@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type TerminationReason struct {
 	Code       TerminationCode `json:"code,omitempty"`

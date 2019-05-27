@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type ClusterSize struct {
 	NumWorkers int32     `json:"num_workers,omitempty"`

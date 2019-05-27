@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type AutoScale struct {
 	MinWorkers int32 `json:"min_workers,omitempty"`

@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type MavenLibrary struct {
 	Coordinates string   `json:"coordinates,omitempty"`

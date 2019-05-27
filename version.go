@@ -1,4 +1,6 @@
 package databricks
 
-const apiVersion = "2.0"
-const sdkVersion = "0.1.0"
+const (
+	APIVersion = "2.0"
+	SdkVersion = "0.1.0"
+)

@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type ClusterEvent struct {
 	ClusterID string           `json:"cluster_id,omitempty"`

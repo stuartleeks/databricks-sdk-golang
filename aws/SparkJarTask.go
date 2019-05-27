@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type SparkJarTask struct {
 	JarURI        string   `json:"jar_uri,omitempty"`

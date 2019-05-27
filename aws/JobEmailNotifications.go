@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type JobEmailNotifications struct {
 	OnStart               []string `json:"on_start,omitempty"`

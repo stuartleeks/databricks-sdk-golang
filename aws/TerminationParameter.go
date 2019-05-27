@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type TerminationParameter string
 

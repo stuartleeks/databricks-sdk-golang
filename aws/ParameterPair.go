@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type ParameterPair struct {
 	Key   string `json:"key,omitempty"`

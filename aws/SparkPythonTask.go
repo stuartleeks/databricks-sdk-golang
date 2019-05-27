@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type SparkPythonTask struct {
 	PythonFile string   `json:"python_file,omitempty"`

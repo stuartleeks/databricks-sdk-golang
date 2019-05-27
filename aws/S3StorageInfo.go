@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type S3StorageInfo struct {
 	Destination      string `json:"destination,omitempty"`

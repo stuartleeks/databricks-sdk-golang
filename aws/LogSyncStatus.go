@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type LogSyncStatus struct {
 	LastAttempted int64  `json:"last_attempted,omitempty"`

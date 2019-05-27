@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type NotebookOutput struct {
 	Result    string `json:"result,omitempty"`

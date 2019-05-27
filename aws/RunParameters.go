@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type RunParameters struct {
 	JarParams         []string    `json:"jar_params,omitempty"`

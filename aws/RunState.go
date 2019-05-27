@@ -1,4 +1,4 @@
-package generic
+package aws
 
 type RunState struct {
 	LifeCycleState RunLifeCycleState `json:"life_cycle_state,omitempty"`
