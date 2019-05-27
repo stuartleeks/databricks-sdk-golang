@@ -1,3 +1,0 @@
-[submodule "transpiler/databricks-cli"]
-	path = transpiler/databricks-cli
-	url = https://github.com/databricks/databricks-cli
