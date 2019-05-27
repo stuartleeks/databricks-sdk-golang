@@ -1,4 +1,8 @@
 package generic
 
-type ListOrder struct {
-}
+type ListOrder string
+
+const (
+	ListOrderDesc = "DESC"
+	ListOrderAsc  = "ASC"
+)

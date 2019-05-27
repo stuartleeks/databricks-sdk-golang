@@ -1,4 +1,9 @@
 package generic
 
-type ClusterSource struct {
-}
+type ClusterSource string
+
+const (
+	ClusterSourceUI  = "UI"
+	ClusterSourceJob = "JOB"
+	ClusterSourceAPI = "API"
+)

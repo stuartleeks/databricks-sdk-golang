@@ -1,4 +1,8 @@
 package generic
 
-type EbsVolumeType struct {
-}
+type EbsVolumeType string
+
+const (
+	EbsVolumeTypeGeneralPurposeSsd      = "GENERAL_PURPOSE_SSD"
+	EbsVolumeTypeThroughputOptimizedHdd = "THROUGHPUT_OPTIMIZED_HDD"
+)

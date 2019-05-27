@@ -1,4 +1,8 @@
 package generic
 
-type ClusterCloudProviderNodeStatus struct {
-}
+type ClusterCloudProviderNodeStatus string
+
+const (
+	ClusterCloudProviderNodeStatusNotEnabledOnSubscription = "NotEnabledOnSubscription"
+	ClusterCloudProviderNodeStatusNotAvailableInRegion     = "NotAvailableInRegion"
+)
