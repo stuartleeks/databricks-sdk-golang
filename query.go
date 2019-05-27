@@ -10,14 +10,17 @@ import (
 	"strconv"
 )
 
-func (dbc *DBClient) performQuery(method, path string, data map[string]interface{}, headers map[string]string) ([]byte, error) {
+func performQuery(
+	option DBClientOption,
+	method, path string,
+	data map[string]interface{}, headers map[string]string) ([]byte, error) {
 
-	requestURL, err := dbc.Option.getRequestURI(path)
+	requestURL, err := option.getRequestURI(path)
 	if err != nil {
 		return nil, err
 	}
 
-	requestHeaders := dbc.Option.getDefaultHeaders()
+	requestHeaders := option.getDefaultHeaders()
 
 	if headers != nil && len(headers) > 0 {
 		for k, v := range headers {
@@ -29,7 +32,7 @@ func (dbc *DBClient) performQuery(method, path string, data map[string]interface
 	if method == "GET" {
 		params := url.Values{}
 		for k, v := range data {
-			translatedValue, err := dbc.translateBooleanToQueryParam(v)
+			translatedValue, err := translateBooleanToQueryParam(v)
 			if err != nil {
 				return nil, err
 			}
@@ -44,7 +47,7 @@ func (dbc *DBClient) performQuery(method, path string, data map[string]interface
 		requestBody = bodyBytes
 	}
 
-	client := dbc.Option.getHTTPClient()
+	client := option.getHTTPClient()
 
 	request, err := http.NewRequest(method, requestURL, bytes.NewBuffer(requestBody))
 	if err != nil {
@@ -70,7 +73,7 @@ func (dbc *DBClient) performQuery(method, path string, data map[string]interface
 	return body, nil
 }
 
-func (dbc *DBClient) translateBooleanToQueryParam(v interface{}) (string, error) {
+func translateBooleanToQueryParam(v interface{}) (string, error) {
 	switch t := v.(type) {
 	case []interface{}:
 		return "", fmt.Errorf("GET parameters cannot pass list of objects")

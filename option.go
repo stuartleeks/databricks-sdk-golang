@@ -18,15 +18,7 @@ type DBClientOption struct {
 	DefaultHeaders     map[string]string
 	InsecureSkipVerify bool
 	TimeoutSeconds     int
-	Flavour            string
 }
-
-const (
-	// DBClientOptionFlavourAws for AWS
-	DBClientOptionFlavourAws = "aws"
-	// DBClientOptionFlavourAzure for Azure
-	DBClientOptionFlavourAzure = "azure"
-)
 
 func (o *DBClientOption) getHTTPClient() http.Client {
 	if o.TimeoutSeconds == 0 {
