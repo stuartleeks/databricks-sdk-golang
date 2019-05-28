@@ -9,10 +9,10 @@ import (
 )
 
 func setup() dbAzure.DBClient {
-	var c dbAzure.DBClient
 	var o databricks.DBClientOption
 	o.Host = os.Getenv("DBSDK_HOST")
 	o.Token = os.Getenv("DBSDK_TOKEN")
+	var c dbAzure.DBClient
 	return c.Init(o)
 }
 
