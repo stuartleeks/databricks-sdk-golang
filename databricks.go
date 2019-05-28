@@ -1,49 +1,82 @@
 package databricks
 
 import (
-	"github.com/xinsnake/databricks-sdk-golang/aws"
-	"github.com/xinsnake/databricks-sdk-golang/azure"
+	"crypto/tls"
+	"encoding/base64"
+	"fmt"
+	"net/http"
+	"net/url"
+	"time"
 )
 
-// AwsDBClient is the client for Azure
-type AwsDBClient struct {
-	Option DBClientOption
-
-	Clusters         aws.ClustersAPI
-	Dbfs             aws.DbfsAPI
-	Groups           aws.GroupsAPI
-	InstanceProfiles aws.InstanceProfilesAPI
-	Jobs             aws.JobsAPI
-	Libraries        aws.LibrariesAPI
-	Scim             aws.ScimAPI
-	Secrets          aws.SecretsAPI
-	Token            aws.TokenAPI
-	Workspace        aws.WorkspaceAPI
+// DBClientOption is used to configure the DataBricks Client
+type DBClientOption struct {
+	User               string
+	Password           string
+	Host               string
+	Token              string
+	DefaultHeaders     map[string]string
+	InsecureSkipVerify bool
+	TimeoutSeconds     int
 }
 
-// PerformQuery provies an abstraction for performQuery
-func (c *AwsDBClient) PerformQuery(
-	method, path string, data map[string]interface{}, headers map[string]string) ([]byte, error) {
-	return performQuery(c.Option, method, path, data, headers)
+func (o *DBClientOption) getHTTPClient() http.Client {
+	if o.TimeoutSeconds == 0 {
+		o.TimeoutSeconds = 10
+	}
+	client := http.Client{
+		Timeout: time.Duration(time.Duration(o.TimeoutSeconds) * time.Second),
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{
+				InsecureSkipVerify: o.InsecureSkipVerify,
+			},
+		},
+	}
+	return client
 }
 
-// AzureDBClient is the client for Azure
-type AzureDBClient struct {
-	Option DBClientOption
-
-	Clusters  azure.ClustersAPI
-	Dbfs      azure.DbfsAPI
-	Groups    azure.GroupsAPI
-	Jobs      azure.JobsAPI
-	Libraries azure.LibrariesAPI
-	Scim      azure.ScimAPI
-	Secrets   azure.SecretsAPI
-	Token     azure.TokenAPI
-	Workspace azure.WorkspaceAPI
+func (o *DBClientOption) getAuthHeader() map[string]string {
+	auth := make(map[string]string)
+	if o.User != "" && o.Password != "" {
+		encodedAuth := []byte(o.User + ":" + o.Password)
+		userHeaderData := "Basic " + base64.StdEncoding.EncodeToString(encodedAuth)
+		auth["Authorization"] = userHeaderData
+		auth["Content-Type"] = "text/json"
+	} else if o.Token != "" {
+		auth["Authorization"] = "Bearer " + o.Token
+		auth["Content-Type"] = "text/json"
+	}
+	return auth
 }
 
-// PerformQuery provies an abstraction for performQuery
-func (c *AzureDBClient) PerformQuery(
-	method, path string, data map[string]interface{}, headers map[string]string) ([]byte, error) {
-	return performQuery(c.Option, method, path, data, headers)
+func (o *DBClientOption) getUserAgentHeader() map[string]string {
+	return map[string]string{
+		"user-agent": fmt.Sprintf("databricks-sdk-golang-%s", SdkVersion),
+	}
+}
+
+func (o *DBClientOption) getDefaultHeaders() map[string]string {
+	auth := o.getAuthHeader()
+	userAgent := o.getUserAgentHeader()
+
+	defaultHeaders := make(map[string]string)
+	for k, v := range auth {
+		defaultHeaders[k] = v
+	}
+	for k, v := range o.DefaultHeaders {
+		defaultHeaders[k] = v
+	}
+	for k, v := range userAgent {
+		defaultHeaders[k] = v
+	}
+	return defaultHeaders
+}
+
+func (o *DBClientOption) getRequestURI(path string) (string, error) {
+	parsedURI, err := url.Parse(o.Host)
+	if err != nil {
+		return "", err
+	}
+	requestURI := fmt.Sprintf("%s://%s/api/%s%s", parsedURI.Scheme, parsedURI.Host, APIVersion, path)
+	return requestURI, nil
 }
