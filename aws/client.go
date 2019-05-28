@@ -13,6 +13,12 @@ func (c DBClient) Init(option databricks.DBClientOption) DBClient {
 	return c
 }
 
+// Clusters returns an instance of ClustersAPI
+func (c DBClient) Clusters() ClustersAPI {
+	var clustersAPI ClustersAPI
+	return clustersAPI.init(c)
+}
+
 // Jobs returns an instance of JobsAPI
 func (c DBClient) Jobs() JobsAPI {
 	var jobsAPI JobsAPI
