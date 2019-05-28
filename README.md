@@ -12,8 +12,8 @@ import (
 )
 
 var o databricks.DBClientOption
-o.Host = os.Getenv("DBSDK_HOST")
-o.Token = os.Getenv("DBSDK_TOKEN")
+o.Host = os.Getenv("DATABRICKS_HOST")
+o.Token = os.Getenv("DATABRICKS_TOKEN")
 
 var c dbAzure.DBClient
 c.Init(o)
