@@ -33,7 +33,7 @@ func (a JobsAPI) Create(jobSettings models.JobSettings) (models.Job, error) {
 // List lists all jobs
 func (a JobsAPI) List() ([]models.Job, error) {
 	var jobsList = struct {
-		Jobs []models.Job `json:"jobs,omitempty"`
+		Jobs []models.Job `json:"jobs,omitempty" url:"jobs,omitempty"`
 	}{}
 
 	resp, err := a.Client.performQuery(http.MethodGet, "/jobs/list", nil, nil)
@@ -48,7 +48,7 @@ func (a JobsAPI) List() ([]models.Job, error) {
 // Delete deletes a job by ID
 func (a JobsAPI) Delete(jobID int64) error {
 	data := struct {
-		JobID int64 `json:"job_id,omitempty"`
+		JobID int64 `json:"job_id,omitempty" url:"job_id,omitempty"`
 	}{
 		jobID,
 	}
@@ -61,7 +61,7 @@ func (a JobsAPI) Get(jobID int64) (models.Job, error) {
 	var job models.Job
 
 	data := struct {
-		JobID int64 `json:"job_id,omitempty"`
+		JobID int64 `json:"job_id,omitempty" url:"job_id,omitempty"`
 	}{
 		jobID,
 	}
@@ -77,8 +77,8 @@ func (a JobsAPI) Get(jobID int64) (models.Job, error) {
 // Reset overwrites job settings
 func (a JobsAPI) Reset(jobID int64, jobSettings models.JobSettings) error {
 	data := struct {
-		JobID       int64              `json:"job_id,omitempty"`
-		NewSettings models.JobSettings `json:"new_settings,omitempty"`
+		JobID       int64              `json:"job_id,omitempty" url:"job_id,omitempty"`
+		NewSettings models.JobSettings `json:"new_settings,omitempty" url:"new_settings,omitempty"`
 	}{
 		jobID,
 		jobSettings,
@@ -92,7 +92,7 @@ func (a JobsAPI) RunNow(runName string, runParameters models.RunParameters) (mod
 	var run models.Run
 
 	data := struct {
-		RunName string `json:"run_name,omitempty"`
+		RunName string `json:"run_name,omitempty" url:"run_name,omitempty"`
 		models.RunParameters
 	}{
 		runName,
@@ -112,7 +112,7 @@ func (a JobsAPI) RunsSubmit(runName string, jobSettings models.JobSettings) (mod
 	var run models.Run
 
 	data := struct {
-		RunName string `json:"run_name,omitempty"`
+		RunName string `json:"run_name,omitempty" url:"run_name,omitempty"`
 		models.JobSettings
 	}{
 		runName,
@@ -129,8 +129,8 @@ func (a JobsAPI) RunsSubmit(runName string, jobSettings models.JobSettings) (mod
 
 // RunsListResponse is a bit special because it has a HasMore field
 type RunsListResponse struct {
-	Runs    []models.Run `json:"runs,omitempty"`
-	HasMore bool         `json:"has_more,omitempty"`
+	Runs    []models.Run `json:"runs,omitempty" url:"runs,omitempty"`
+	HasMore bool         `json:"has_more,omitempty" url:"has_more,omitempty"`
 }
 
 // RunsList lists runs from most recently started to least
@@ -138,11 +138,11 @@ func (a JobsAPI) RunsList(activeOnly, completedOnly bool, jobID int64, offset, l
 	var runlistResponse RunsListResponse
 
 	data := struct {
-		ActiveOnly    bool  `json:"active_only,omitempty"`
-		CompletedOnly bool  `json:"completed_only,omitempty"`
-		JobID         int64 `json:"job_id,omitempty"`
-		Offset        int32 `json:"offset,omitempty"`
-		Limit         int32 `json:"limit,omitempty"`
+		ActiveOnly    bool  `json:"active_only,omitempty" url:"active_only,omitempty"`
+		CompletedOnly bool  `json:"completed_only,omitempty" url:"completed_only,omitempty"`
+		JobID         int64 `json:"job_id,omitempty" url:"job_id,omitempty"`
+		Offset        int32 `json:"offset,omitempty" url:"offset,omitempty"`
+		Limit         int32 `json:"limit,omitempty" url:"limit,omitempty"`
 	}{
 		activeOnly,
 		completedOnly,
@@ -164,7 +164,7 @@ func (a JobsAPI) RunsGet(runID int64) (models.Run, error) {
 	var run models.Run
 
 	data := struct {
-		RunID int64 `json:"run_id,omitempty"`
+		RunID int64 `json:"run_id,omitempty" url:"run_id,omitempty"`
 	}{
 		runID,
 	}
@@ -180,11 +180,11 @@ func (a JobsAPI) RunsGet(runID int64) (models.Run, error) {
 // RunsExport exports and retrieve the job run task
 func (a JobsAPI) RunsExport(runID int64) ([]models.ViewItem, error) {
 	var viewItemsView = struct {
-		Views []models.ViewItem `json:"views,omitempty"`
+		Views []models.ViewItem `json:"views,omitempty" url:"views,omitempty"`
 	}{}
 
 	data := struct {
-		RunID int64 `json:"run_id,omitempty"`
+		RunID int64 `json:"run_id,omitempty" url:"run_id,omitempty"`
 	}{
 		runID,
 	}
@@ -200,7 +200,7 @@ func (a JobsAPI) RunsExport(runID int64) ([]models.ViewItem, error) {
 // RunsCancel cancels a run
 func (a JobsAPI) RunsCancel(runID int64) error {
 	data := struct {
-		RunID int64 `json:"run_id,omitempty"`
+		RunID int64 `json:"run_id,omitempty" url:"run_id,omitempty"`
 	}{
 		runID,
 	}
@@ -210,9 +210,9 @@ func (a JobsAPI) RunsCancel(runID int64) error {
 
 // RunsGetOutputResponse is the output of the run
 type RunsGetOutputResponse struct {
-	NotebookOutput models.NotebookOutput `json:"notebook_output,omitempty"`
-	Error          string                `json:"error,omitempty"`
-	Metadata       models.Run            `json:"metadata,omitempty"`
+	NotebookOutput models.NotebookOutput `json:"notebook_output,omitempty" url:"notebook_output,omitempty"`
+	Error          string                `json:"error,omitempty" url:"error,omitempty"`
+	Metadata       models.Run            `json:"metadata,omitempty" url:"metadata,omitempty"`
 }
 
 // RunsGetOutput retrieves the output of a run
@@ -220,7 +220,7 @@ func (a JobsAPI) RunsGetOutput(runID int64) (RunsGetOutputResponse, error) {
 	var runsGetOutputResponse RunsGetOutputResponse
 
 	data := struct {
-		RunID int64 `json:"run_id,omitempty"`
+		RunID int64 `json:"run_id,omitempty" url:"run_id,omitempty"`
 	}{
 		runID,
 	}
@@ -236,7 +236,7 @@ func (a JobsAPI) RunsGetOutput(runID int64) (RunsGetOutputResponse, error) {
 // RunsDelete deletes a non-active run. Returns an error if the run is active.
 func (a JobsAPI) RunsDelete(runID int64) error {
 	data := struct {
-		RunID int64 `json:"run_id,omitempty"`
+		RunID int64 `json:"run_id,omitempty" url:"run_id,omitempty"`
 	}{
 		runID,
 	}
