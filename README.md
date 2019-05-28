@@ -5,7 +5,8 @@
 ```go
 import (
   databricks "github.com/xinsnake/databricks-sdk-golang"
-	dbAzure "github.com/xinsnake/databricks-sdk-golang/azure"
+  dbAzure "github.com/xinsnake/databricks-sdk-golang/azure"
+  // dbAws "github.com/xinsnake/databricks-sdk-golang/aws"
 )
 
 var o databricks.DBClientOption
