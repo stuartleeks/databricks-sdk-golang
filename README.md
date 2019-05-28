@@ -1,5 +1,7 @@
 # databricks-sdk-golang
 
+<span style="color: #ff3333">WARNING: The SDK is unstable and under development. More testing needed!</span>
+
 This is a Golang SDK for [DataBricks REST API 2.0](https://docs.databricks.com/api/latest/index.html#) and [Azure DataBricks REST API 2.0](https://docs.azuredatabricks.net/api/latest/index.html).
 
 ## Usage
