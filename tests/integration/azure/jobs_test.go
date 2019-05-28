@@ -16,6 +16,15 @@ func setup() dbAzure.DBClient {
 	return c.Init(o)
 }
 
+func TestGet(t *testing.T) {
+	c := setup()
+	job, err := c.Jobs().Get(1)
+	if err != nil {
+		t.Errorf("%+v\n", err)
+	}
+	t.Logf("%+v\n", job)
+}
+
 func TestList(t *testing.T) {
 	c := setup()
 	jobs, err := c.Jobs().List()
