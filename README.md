@@ -28,7 +28,7 @@ refer to the progress below:
 
 | API  | AWS | Azure |
 | ---- | --- | ----- |
-| Clusters API | ✗ | ✗ |
+| Clusters API | ✔ | ✔ |
 | DBFS API | ✗ | ✗ |
 | Groups API | ✗ | ✗ |
 | Instance Profiles API | ✗ | N/A |
