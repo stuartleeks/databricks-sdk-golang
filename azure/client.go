@@ -19,6 +19,12 @@ func (c DBClient) Clusters() ClustersAPI {
 	return clustersAPI.init(c)
 }
 
+// Dbfs returns an instance of DbfsAPI
+func (c DBClient) Dbfs() DbfsAPI {
+	var dbfsAPI DbfsAPI
+	return dbfsAPI.init(c)
+}
+
 // Jobs returns an instance of JobsAPI
 func (c DBClient) Jobs() JobsAPI {
 	var jobsAPI JobsAPI

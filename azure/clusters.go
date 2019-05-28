@@ -182,8 +182,8 @@ func (a ClustersAPI) SparkVersions() ([]models.SparkVersion, error) {
 	return versionsList.Versions, err
 }
 
-// EventsResponse is the response from Events
-type EventsResponse struct {
+// ClustersEventsResponse is the response from Events
+type ClustersEventsResponse struct {
 	Events   []models.ClusterEvent `json:"events,omitempty" url:"events,omitempty"`
 	NextPage struct {
 		ClusterID string `json:"cluster_id,omitempty" url:"cluster_id,omitempty"`
@@ -196,9 +196,9 @@ type EventsResponse struct {
 // Events retrieves a list of events about the activity of a cluster
 func (a ClustersAPI) Events(
 	clusterID string, startTime, endTime int64, order models.ListOrder,
-	eventTypes []models.ClusterEventType, offset, limit int64) (EventsResponse, error) {
+	eventTypes []models.ClusterEventType, offset, limit int64) (ClustersEventsResponse, error) {
 
-	var eventsResponse EventsResponse
+	var eventsResponse ClustersEventsResponse
 
 	data := struct {
 		ClusterID  string                    `json:"cluster_id,omitempty" url:"cluster_id,omitempty"`

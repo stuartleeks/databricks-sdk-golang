@@ -182,15 +182,15 @@ func (a ClustersAPI) SparkVersions() ([]models.SparkVersion, error) {
 	return versionsList.Versions, err
 }
 
-// ListZonesResponse is the response from ListZones
-type ListZonesResponse struct {
+// ClustersListZonesResponse is the response from ListZones
+type ClustersListZonesResponse struct {
 	Zones       []string `json:"zones,omitempty" url:"zones,omitempty"`
 	DefaultZone string   `json:"default_zone,omitempty" url:"default_zone,omitempty"`
 }
 
 // ListZones returns a list of availability zones where clusters can be created in (ex: us-west-2a)
-func (a ClustersAPI) ListZones() (ListZonesResponse, error) {
-	var zonesList ListZonesResponse
+func (a ClustersAPI) ListZones() (ClustersListZonesResponse, error) {
+	var zonesList ClustersListZonesResponse
 
 	resp, err := a.Client.performQuery(http.MethodGet, "/clusters/list-zones", nil, nil)
 	if err != nil {
@@ -201,8 +201,8 @@ func (a ClustersAPI) ListZones() (ListZonesResponse, error) {
 	return zonesList, err
 }
 
-// EventsResponse is the response from Events
-type EventsResponse struct {
+// ClustersEventsResponse is the response from Events
+type ClustersEventsResponse struct {
 	Events   []models.ClusterEvent `json:"events,omitempty" url:"events,omitempty"`
 	NextPage struct {
 		ClusterID string `json:"cluster_id,omitempty" url:"cluster_id,omitempty"`
@@ -215,9 +215,9 @@ type EventsResponse struct {
 // Events retrieves a list of events about the activity of a cluster
 func (a ClustersAPI) Events(
 	clusterID string, startTime, endTime int64, order models.ListOrder,
-	eventTypes []models.ClusterEventType, offset, limit int64) (EventsResponse, error) {
+	eventTypes []models.ClusterEventType, offset, limit int64) (ClustersEventsResponse, error) {
 
-	var eventsResponse EventsResponse
+	var eventsResponse ClustersEventsResponse
 
 	data := struct {
 		ClusterID  string                    `json:"cluster_id,omitempty" url:"cluster_id,omitempty"`

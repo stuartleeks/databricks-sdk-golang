@@ -127,15 +127,15 @@ func (a JobsAPI) RunsSubmit(runName string, jobSettings models.JobSettings) (mod
 	return run, err
 }
 
-// RunsListResponse is a bit special because it has a HasMore field
-type RunsListResponse struct {
+// JobsRunsListResponse is a bit special because it has a HasMore field
+type JobsRunsListResponse struct {
 	Runs    []models.Run `json:"runs,omitempty" url:"runs,omitempty"`
 	HasMore bool         `json:"has_more,omitempty" url:"has_more,omitempty"`
 }
 
 // RunsList lists runs from most recently started to least
-func (a JobsAPI) RunsList(activeOnly, completedOnly bool, jobID int64, offset, limit int32) (RunsListResponse, error) {
-	var runlistResponse RunsListResponse
+func (a JobsAPI) RunsList(activeOnly, completedOnly bool, jobID int64, offset, limit int32) (JobsRunsListResponse, error) {
+	var runlistResponse JobsRunsListResponse
 
 	data := struct {
 		ActiveOnly    bool  `json:"active_only,omitempty" url:"active_only,omitempty"`
@@ -208,16 +208,16 @@ func (a JobsAPI) RunsCancel(runID int64) error {
 	return err
 }
 
-// RunsGetOutputResponse is the output of the run
-type RunsGetOutputResponse struct {
+// JobsRunsGetOutputResponse is the output of the run
+type JobsRunsGetOutputResponse struct {
 	NotebookOutput models.NotebookOutput `json:"notebook_output,omitempty" url:"notebook_output,omitempty"`
 	Error          string                `json:"error,omitempty" url:"error,omitempty"`
 	Metadata       models.Run            `json:"metadata,omitempty" url:"metadata,omitempty"`
 }
 
 // RunsGetOutput retrieves the output of a run
-func (a JobsAPI) RunsGetOutput(runID int64) (RunsGetOutputResponse, error) {
-	var runsGetOutputResponse RunsGetOutputResponse
+func (a JobsAPI) RunsGetOutput(runID int64) (JobsRunsGetOutputResponse, error) {
+	var runsGetOutputResponse JobsRunsGetOutputResponse
 
 	data := struct {
 		RunID int64 `json:"run_id,omitempty" url:"run_id,omitempty"`
