@@ -32,15 +32,17 @@ func (a JobsAPI) Create(jobSettings models.JobSettings) (models.Job, error) {
 
 // List lists all jobs
 func (a JobsAPI) List() ([]models.Job, error) {
-	var jobs []models.Job
+	var jobsList = struct {
+		Jobs []models.Job `json:"jobs,omitempty"`
+	}{}
 
 	resp, err := a.Client.performQuery(http.MethodGet, "/jobs/list", nil, nil)
 	if err != nil {
-		return jobs, err
+		return jobsList.Jobs, err
 	}
 
-	err = json.Unmarshal(resp, &jobs)
-	return jobs, err
+	err = json.Unmarshal(resp, &jobsList)
+	return jobsList.Jobs, err
 }
 
 // Delete deletes a job by ID

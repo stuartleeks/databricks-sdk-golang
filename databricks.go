@@ -41,17 +41,17 @@ func (o *DBClientOption) getAuthHeader() map[string]string {
 		encodedAuth := []byte(o.User + ":" + o.Password)
 		userHeaderData := "Basic " + base64.StdEncoding.EncodeToString(encodedAuth)
 		auth["Authorization"] = userHeaderData
-		auth["Content-Type"] = "text/json"
+		auth["Content-Type"] = "application/json"
 	} else if o.Token != "" {
 		auth["Authorization"] = "Bearer " + o.Token
-		auth["Content-Type"] = "text/json"
+		auth["Content-Type"] = "application/json"
 	}
 	return auth
 }
 
 func (o *DBClientOption) getUserAgentHeader() map[string]string {
 	return map[string]string{
-		"user-agent": fmt.Sprintf("databricks-sdk-golang-%s", SdkVersion),
+		"User-Agent": fmt.Sprintf("databricks-sdk-golang-%s", SdkVersion),
 	}
 }
 

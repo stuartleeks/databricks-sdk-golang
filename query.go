@@ -47,6 +47,9 @@ func PerformQuery(option DBClientOption, method, path string, data interface{}, 
 	if err != nil {
 		return nil, err
 	}
+	for k, v := range requestHeaders {
+		request.Header.Set(k, v)
+	}
 
 	resp, err := client.Do(request)
 	if err != nil {
