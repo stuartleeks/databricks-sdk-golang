@@ -33,3 +33,12 @@ func TestList(t *testing.T) {
 	}
 	t.Logf("%+v\n", jobs)
 }
+
+func TestRunsList(t *testing.T) {
+	c := setup()
+	runsView, err := c.Jobs().RunsList(false, false, 0, 0, 0)
+	if err != nil {
+		t.Errorf("%+v\n", err)
+	}
+	t.Logf("%+v\n", runsView)
+}
