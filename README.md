@@ -36,7 +36,7 @@ refer to the progress below:
 | Instance Profiles API | ✔ | N/A |
 | Jobs API | ✔ | ✔ |
 | Libraries API | ✔ | ✔ |
-| SCIM API | ✗ | ✗ |
+| SCIM API (preview) | ✗ | ✗ |
 | Secrets API | ✔ | ✔ |
 | Token API | ✔ | ✔ |
-| Workspace API | ✗ | ✗ |
+| Workspace API | ✔ | ✔ |
