@@ -25,8 +25,7 @@ jobs, err := c.Jobs().List()
 
 ## Implementation Progress
 
-The library is currently under heavy development. Please
-refer to the progress below:
+Everything except SCIM API are implemented. Please refer to the progress below:
 
 | API  | AWS | Azure |
 | :--- | :---: | :---: |
