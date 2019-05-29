@@ -29,7 +29,7 @@ The library is currently under heavy development. Please
 refer to the progress below:
 
 | API  | AWS | Azure |
-| ---- | --- | ----- |
+| :--- | :---: | :---: |
 | Clusters API | ✔ | ✔ |
 | DBFS API | ✔ | ✔ |
 | Groups API | ✔ | ✔ |
