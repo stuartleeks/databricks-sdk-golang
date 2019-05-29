@@ -108,17 +108,19 @@ func (a JobsAPI) RunNow(jobID int64, runParameters models.RunParameters) (models
 }
 
 // RunsSubmit submit a one-time run
-func (a JobsAPI) RunsSubmit(runName string, clusterSpec models.ClusterSpec, jobTask models.JobTask) (models.Run, error) {
+func (a JobsAPI) RunsSubmit(runName string, clusterSpec models.ClusterSpec, jobTask models.JobTask, timeoutSeconds int32) (models.Run, error) {
 	var run models.Run
 
 	data := struct {
 		RunName string `json:"run_name,omitempty" url:"run_name,omitempty"`
 		models.ClusterSpec
 		models.JobTask
+		TimeoutSeconds int32 `json:"timeout_seconds,omitempty" url:"timeout_seconds,omitempty"`
 	}{
 		runName,
 		clusterSpec,
 		jobTask,
+		timeoutSeconds,
 	}
 	resp, err := a.Client.performQuery(http.MethodPost, "/jobs/submit", data, nil)
 	if err != nil {
