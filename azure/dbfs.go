@@ -157,14 +157,12 @@ type DbfsReadResponse struct {
 	Data      []byte `json:"data,omitempty" url:"data,omitempty"`
 }
 
-type dbfsReadResponseBase64 struct {
-	BytesRead int64  `json:"bytes_read,omitempty" url:"bytes_read,omitempty"`
-	Data      string `json:"data,omitempty" url:"data,omitempty"`
-}
-
 // Read returns the contents of a file
 func (a DbfsAPI) Read(path string, offset, length int64) (DbfsReadResponse, error) {
-	var readResponseBase64 dbfsReadResponseBase64
+	var readResponseBase64 struct {
+		BytesRead int64  `json:"bytes_read,omitempty" url:"bytes_read,omitempty"`
+		Data      string `json:"data,omitempty" url:"data,omitempty"`
+	}
 	var readResponse DbfsReadResponse
 
 	data := struct {

@@ -55,13 +55,11 @@ func (a GroupsAPI) Create(groupName string) (GroupsCreateResponse, error) {
 	return createResponse, err
 }
 
-type groupsListMembersResponse struct {
-	Members []models.PrincipalName `json:"members,omitempty" url:"members,omitempty"`
-}
-
 // ListMembers returns all of the members of a particular group
 func (a GroupsAPI) ListMembers(groupName string) ([]models.PrincipalName, error) {
-	var membersResponse groupsListMembersResponse
+	var membersResponse struct {
+		Members []models.PrincipalName `json:"members,omitempty" url:"members,omitempty"`
+	}
 
 	data := struct {
 		GroupName string `json:"group_name,omitempty" url:"group_name,omitempty"`
@@ -77,13 +75,11 @@ func (a GroupsAPI) ListMembers(groupName string) ([]models.PrincipalName, error)
 	return membersResponse.Members, err
 }
 
-type groupsListResponse struct {
-	GroupNames []string `json:"group_names,omitempty" url:"group_names,omitempty"`
-}
-
 // List returns all of the groups in an organization
 func (a GroupsAPI) List() ([]string, error) {
-	var listResponse groupsListResponse
+	var listResponse struct {
+		GroupNames []string `json:"group_names,omitempty" url:"group_names,omitempty"`
+	}
 
 	resp, err := a.Client.performQuery(http.MethodGet, "/groups/list", nil, nil)
 	if err != nil {
@@ -94,13 +90,11 @@ func (a GroupsAPI) List() ([]string, error) {
 	return listResponse.GroupNames, err
 }
 
-type groupsListParentsResponse struct {
-	GroupNames []string `json:"group_names,omitempty" url:"group_names,omitempty"`
-}
-
 // ListParents retrieves all groups in which a given user or group is a member
 func (a GroupsAPI) ListParents(principalName models.PrincipalName) ([]string, error) {
-	var listParentsResponse groupsListParentsResponse
+	var listParentsResponse struct {
+		GroupNames []string `json:"group_names,omitempty" url:"group_names,omitempty"`
+	}
 
 	data := struct {
 		UserName  string `json:"user_name,omitempty" url:"user_name,omitempty"`

@@ -17,13 +17,11 @@ func (a LibrariesAPI) init(client DBClient) LibrariesAPI {
 	return a
 }
 
-type librariesAllClusterStatusesResponse struct {
-	Statuses []models.ClusterLibraryStatuses `json:"statuses,omitempty" url:"statuses,omitempty"`
-}
-
 // AllClusterStatuses gets the status of all libraries on all clusters
 func (a LibrariesAPI) AllClusterStatuses() ([]models.ClusterLibraryStatuses, error) {
-	var allClusterStatusesResponse librariesAllClusterStatusesResponse
+	var allClusterStatusesResponse struct {
+		Statuses []models.ClusterLibraryStatuses `json:"statuses,omitempty" url:"statuses,omitempty"`
+	}
 
 	resp, err := a.Client.performQuery(http.MethodGet, "/libraries/all-cluster-statuses", nil, nil)
 	if err != nil {

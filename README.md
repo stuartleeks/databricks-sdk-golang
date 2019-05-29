@@ -37,6 +37,6 @@ refer to the progress below:
 | Jobs API | ✔ | ✔ |
 | Libraries API | ✔ | ✔ |
 | SCIM API | ✗ | ✗ |
-| Secrets API | ✗ | ✗ |
+| Secrets API | ✔ | ✔ |
 | Token API | ✗ | ✗ |
 | Workspace API | ✗ | ✗ |

@@ -30,13 +30,11 @@ func (a InstanceProfilesAPI) Add(instanceProfileArn string, skipValidation bool)
 	return err
 }
 
-type instanceProfilesListResponse struct {
-	InstanceProfiles []models.InstanceProfile `json:"instance_profiles,omitempty" url:"instance_profiles,omitempty"`
-}
-
 // List lists the instance profiles that the calling user can use to launch a cluster
 func (a InstanceProfilesAPI) List() ([]models.InstanceProfile, error) {
-	var listResponse instanceProfilesListResponse
+	var listResponse struct {
+		InstanceProfiles []models.InstanceProfile `json:"instance_profiles,omitempty" url:"instance_profiles,omitempty"`
+	}
 
 	resp, err := a.Client.performQuery(http.MethodGet, "/instance-profiles/list", nil, nil)
 	if err != nil {
