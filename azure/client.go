@@ -7,6 +7,12 @@ type DBClient struct {
 	Option databricks.DBClientOption
 }
 
+// Init initializes the client
+func (c DBClient) Init(option databricks.DBClientOption) DBClient {
+	c.Option = option
+	return c
+}
+
 // Clusters returns an instance of ClustersAPI
 func (c DBClient) Clusters() ClustersAPI {
 	var clustersAPI ClustersAPI
