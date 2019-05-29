@@ -88,14 +88,14 @@ func (a JobsAPI) Reset(jobID int64, jobSettings models.JobSettings) error {
 }
 
 // RunNow runs a job now and return the run_id of the triggered run
-func (a JobsAPI) RunNow(runName string, runParameters models.RunParameters) (models.Run, error) {
+func (a JobsAPI) RunNow(jobID int64, runParameters models.RunParameters) (models.Run, error) {
 	var run models.Run
 
 	data := struct {
-		RunName string `json:"run_name,omitempty" url:"run_name,omitempty"`
+		JobID int64 `json:"job_id,omitempty" url:"job_id,omitempty"`
 		models.RunParameters
 	}{
-		runName,
+		jobID,
 		runParameters,
 	}
 	resp, err := a.Client.performQuery(http.MethodPost, "/jobs/run-now", data, nil)
@@ -108,15 +108,17 @@ func (a JobsAPI) RunNow(runName string, runParameters models.RunParameters) (mod
 }
 
 // RunsSubmit submit a one-time run
-func (a JobsAPI) RunsSubmit(runName string, jobSettings models.JobSettings) (models.Run, error) {
+func (a JobsAPI) RunsSubmit(runName string, clusterSpec models.ClusterSpec, jobTask models.JobTask) (models.Run, error) {
 	var run models.Run
 
 	data := struct {
 		RunName string `json:"run_name,omitempty" url:"run_name,omitempty"`
-		models.JobSettings
+		models.ClusterSpec
+		models.JobTask
 	}{
 		runName,
-		jobSettings,
+		clusterSpec,
+		jobTask,
 	}
 	resp, err := a.Client.performQuery(http.MethodPost, "/jobs/submit", data, nil)
 	if err != nil {
