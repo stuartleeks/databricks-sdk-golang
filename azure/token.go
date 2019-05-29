@@ -49,7 +49,7 @@ func (a SecretsAPI) List() ([]models.PublicTokenInfo, error) {
 		TokenInfos []models.PublicTokenInfo `json:"token_infos,omitempty" url:"token_infos,omitempty"`
 	}
 
-	resp, err := a.Client.performQuery(http.MethodGet, "/token/create", nil, nil)
+	resp, err := a.Client.performQuery(http.MethodGet, "/token/list", nil, nil)
 	if err != nil {
 		return publicTokenInfo.TokenInfos, err
 	}
