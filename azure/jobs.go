@@ -122,7 +122,7 @@ func (a JobsAPI) RunsSubmit(runName string, clusterSpec models.ClusterSpec, jobT
 		jobTask,
 		timeoutSeconds,
 	}
-	resp, err := a.Client.performQuery(http.MethodPost, "/jobs/submit", data, nil)
+	resp, err := a.Client.performQuery(http.MethodPost, "/jobs/runs/submit", data, nil)
 	if err != nil {
 		return run, err
 	}
