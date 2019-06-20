@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"os"
 	"testing"
+	"time"
 
 	databricks "github.com/xinsnake/databricks-sdk-golang"
 	dbAzure "github.com/xinsnake/databricks-sdk-golang/azure"
@@ -18,37 +19,7 @@ func setup() dbAzure.DBClient {
 	return c.Init(o)
 }
 
-func TestGet(t *testing.T) {
-	c := setup()
-	job, err := c.Jobs().Get(1)
-	if err != nil {
-		t.Errorf("%+v\n", err)
-	}
-	v, err := json.Marshal(job)
-	t.Logf("%+v\n", string(v))
-}
-
-func TestList(t *testing.T) {
-	c := setup()
-	jobs, err := c.Jobs().List()
-	if err != nil {
-		t.Errorf("%+v\n", err)
-	}
-	v, err := json.Marshal(jobs)
-	t.Logf("%s\n", string(v))
-}
-
-func TestRunsList(t *testing.T) {
-	c := setup()
-	runsView, err := c.Jobs().RunsList(false, false, 0, 0, 0)
-	if err != nil {
-		t.Errorf("%+v\n", err)
-	}
-	v, err := json.Marshal(runsView)
-	t.Logf("%s\n", string(v))
-}
-
-func TestRunsSubmit(t *testing.T) {
+func TestRuns(t *testing.T) {
 	c := setup()
 	runName := "test-run"
 	clusterSpec := dbAzureModels.ClusterSpec{
@@ -71,6 +42,19 @@ func TestRunsSubmit(t *testing.T) {
 	if err != nil {
 		t.Errorf("%+v\n", err)
 	}
-	v, err := json.Marshal(runResponse)
+	v, _ := json.Marshal(runResponse)
 	t.Logf("%s\n", string(v))
+
+	time.Sleep(5 * time.Second)
+
+	err = c.Jobs().RunsCancel(runResponse.RunID)
+	if err != nil {
+		t.Errorf("%+v\n", err)
+	}
+
+	time.Sleep(5 * time.Second)
+	err = c.Jobs().RunsDelete(runResponse.RunID)
+	if err != nil {
+		t.Errorf("%+v\n", err)
+	}
 }
