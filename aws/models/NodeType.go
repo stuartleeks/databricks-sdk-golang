@@ -7,5 +7,5 @@ type NodeType struct {
 	Description    string                       `json:"description,omitempty" url:"description,omitempty"`
 	InstanceTypeID string                       `json:"instance_type_id,omitempty" url:"instance_type_id,omitempty"`
 	IsDeprecated   bool                         `json:"is_deprecated,omitempty" url:"is_deprecated,omitempty"`
-	NodeInfo       ClusterCloudProviderNodeInfo `json:"node_info,omitempty" url:"node_info,omitempty"`
+	NodeInfo       *ClusterCloudProviderNodeInfo `json:"node_info,omitempty" url:"node_info,omitempty"`
 }

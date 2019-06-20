@@ -6,6 +6,6 @@ type SparkNode struct {
 	NodeID            string                 `json:"node_id,omitempty" url:"node_id,omitempty"`
 	InstanceID        string                 `json:"instance_id,omitempty" url:"instance_id,omitempty"`
 	StartTimestamp    int64                  `json:"start_timestamp,omitempty" url:"start_timestamp,omitempty"`
-	NodeAwsAttributes SparkNodeAwsAttributes `json:"node_aws_attributes,omitempty" url:"node_aws_attributes,omitempty"`
+	NodeAwsAttributes *SparkNodeAwsAttributes `json:"node_aws_attributes,omitempty" url:"node_aws_attributes,omitempty"`
 	HostPrivateIP     string                 `json:"host_private_ip,omitempty" url:"host_private_ip,omitempty"`
 }

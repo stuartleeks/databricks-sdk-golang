@@ -2,6 +2,7 @@ package azure
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 
 	"github.com/xinsnake/databricks-sdk-golang/azure/models"
@@ -122,6 +123,8 @@ func (a JobsAPI) RunsSubmit(runName string, clusterSpec models.ClusterSpec, jobT
 		jobTask,
 		timeoutSeconds,
 	}
+	v, _ := json.Marshal(data)
+	log.Println(string(v))
 	resp, err := a.Client.performQuery(http.MethodPost, "/jobs/runs/submit", data, nil)
 	if err != nil {
 		return run, err
