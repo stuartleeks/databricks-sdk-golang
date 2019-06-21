@@ -27,9 +27,8 @@ func TestRuns(t *testing.T) {
 			SparkVersion: "5.2.x-scala2.11",
 			NodeTypeID:   "Standard_DS3_v2",
 			NumWorkers:   3,
-			SparkEnvVars: &dbAzureModels.SparkEnvPair{
-				Key:   "PYSPARK_PYTHON",
-				Value: "/databricks/python3/bin/python3",
+			SparkEnvVars: map[string]string{
+				"PYSPARK_PYTHON": "/databricks/python3/bin/python3",
 			},
 		},
 	}

@@ -16,7 +16,7 @@ type ClusterInfo struct {
 	DriverNodeTypeID       string             `json:"driver_node_type_id,omitempty" url:"driver_node_type_id,omitempty"`
 	ClusterLogConf         *ClusterLogConf    `json:"cluster_log_conf,omitempty" url:"cluster_log_conf,omitempty"`
 	InitScripts            []InitScriptInfo   `json:"init_scripts,omitempty" url:"init_scripts,omitempty"`
-	SparkEnvVars           *SparkEnvPair      `json:"spark_env_vars,omitempty" url:"spark_env_vars,omitempty"`
+	SparkEnvVars           map[string]string  `json:"spark_env_vars,omitempty" url:"spark_env_vars,omitempty"`
 	AutoterminationMinutes int32              `json:"autotermination_minutes,omitempty" url:"autotermination_minutes,omitempty"`
 	State                  *ClusterState      `json:"state,omitempty" url:"state,omitempty"`
 	StateMessage           string             `json:"state_message,omitempty" url:"state_message,omitempty"`
