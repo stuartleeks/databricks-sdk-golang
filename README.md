@@ -39,3 +39,7 @@ Everything except SCIM API are implemented. Please refer to the progress below:
 | Secrets API | ✔ | ✔ |
 | Token API | ✔ | ✔ |
 | Workspace API | ✔ | ✔ |
+
+## Notes
+
+- [Deepcopy](https://godoc.org/k8s.io/gengo/examples/deepcopy-gen) is generated shall you need it.
