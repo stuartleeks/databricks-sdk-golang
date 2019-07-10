@@ -1,2 +1,2 @@
 deepcopy:
-	deepcopy-gen -i ./aws/models/,./azure/models/ -h ./hack/boilerplate.go.txt -v 3
+	deepcopy-gen -i ./aws/models/,./azure/models/,./aws/,./azure/ -h ./hack/boilerplate.go.txt -v 3
