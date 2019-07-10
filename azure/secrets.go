@@ -101,12 +101,18 @@ func (a SecretsAPI) DeleteSecret(scope, key string) error {
 }
 
 // ListSecrets lists the secret keys that are stored at this scope
-func (a SecretsAPI) ListSecrets() ([]models.SecretMetadata, error) {
+func (a SecretsAPI) ListSecrets(scope string) ([]models.SecretMetadata, error) {
 	var secretsList struct {
 		Secrets []models.SecretMetadata `json:"secrets,omitempty" url:"secrets,omitempty"`
 	}
 
-	resp, err := a.Client.performQuery(http.MethodGet, "/secrets/list", nil, nil)
+	data := struct {
+		Scope string `json:"scope,omitempty" url:"scope,omitempty"`
+	}{
+		scope,
+	}
+
+	resp, err := a.Client.performQuery(http.MethodGet, "/secrets/list", data, nil)
 	if err != nil {
 		return secretsList.Secrets, err
 	}
