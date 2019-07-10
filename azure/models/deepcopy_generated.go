@@ -991,8 +991,10 @@ func (in *RunParameters) DeepCopyInto(out *RunParameters) {
 	}
 	if in.NotebookParams != nil {
 		in, out := &in.NotebookParams, &out.NotebookParams
-		*out = make([]ParamPair, len(*in))
-		copy(*out, *in)
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
 	}
 	if in.PythonParams != nil {
 		in, out := &in.PythonParams, &out.PythonParams
