@@ -33,6 +33,10 @@ var _ = Describe("Client", func() {
 		Expect(dbClient.Groups().Client.Option.User).To(Equal(testUser))
 	})
 
+	It("Should return initialised InstancePoolsAPI", func() {
+		Expect(dbClient.InstancePools().Client.Option.User).To(Equal(testUser))
+	})
+
 	It("Should return initialised JobsAPI", func() {
 		Expect(dbClient.Jobs().Client.Option.User).To(Equal(testUser))
 	})

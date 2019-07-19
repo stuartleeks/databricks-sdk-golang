@@ -31,6 +31,12 @@ func (c DBClient) Groups() GroupsAPI {
 	return groupsAPI.init(c)
 }
 
+// InstancePools returns an instance of InstancePoolsAPI
+func (c DBClient) InstancePools() InstancePoolsAPI {
+	var instancePoolsAPI InstancePoolsAPI
+	return instancePoolsAPI.init(c)
+}
+
 // Jobs returns an instance of JobsAPI
 func (c DBClient) Jobs() JobsAPI {
 	var jobsAPI JobsAPI
