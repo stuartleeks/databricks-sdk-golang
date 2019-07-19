@@ -36,7 +36,7 @@ Everything except SCIM API are implemented. Please refer to the progress below:
 | Instance Profiles API | ✔ | N/A |
 | Jobs API | ✔ | ✔ |
 | Libraries API | ✔ | ✔ |
-| MLflow PI | ✗ | ✗ |
+| MLflow API | ✗ | ✗ |
 | SCIM API (preview) | ✗ | ✗ |
 | Secrets API | ✔ | ✔ |
 | Token API | ✔ | ✔ |
