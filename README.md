@@ -32,9 +32,11 @@ Everything except SCIM API are implemented. Please refer to the progress below:
 | Clusters API | ✔ | ✔ |
 | DBFS API | ✔ | ✔ |
 | Groups API | ✔ | ✔ |
+| Instance Pools API (preview) | ✗ | ✗ |
 | Instance Profiles API | ✔ | N/A |
 | Jobs API | ✔ | ✔ |
 | Libraries API | ✔ | ✔ |
+| MLflow PI | ✗ | ✗ |
 | SCIM API (preview) | ✗ | ✗ |
 | Secrets API | ✔ | ✔ |
 | Token API | ✔ | ✔ |
