@@ -10,4 +10,5 @@ const (
 	ClusterStateTerminating = "TERMINATING"
 	ClusterStateError       = "ERROR"
 	ClusterStateUnknown     = "UNKNOWN"
+	ClusterStateTERMINATED  = "TERMINATED"
 )
