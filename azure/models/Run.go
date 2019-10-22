@@ -17,4 +17,7 @@ type Run struct {
 	ExecutionDuration    int64            `json:"execution_duration,omitempty" url:"execution_duration,omitempty"`
 	CleanupDuration      int64            `json:"cleanup_duration,omitempty" url:"cleanup_duration,omitempty"`
 	Trigger              *TriggerType     `json:"trigger,omitempty" url:"trigger,omitempty"`
+	RunName              string           `json:"run_name,omitempty" url:"run_name,omitempty"`
+	RunPageURL           string           `json:"run_page_url,omitempty" url:"run_page_url,omitempty"`
+	RunType              string           `json:"run_type,omitempty" url:"run_type,omitempty"`
 }
