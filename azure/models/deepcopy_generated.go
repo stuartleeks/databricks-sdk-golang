@@ -789,13 +789,10 @@ func (in *NewCluster) DeepCopyInto(out *NewCluster) {
 	}
 	if in.SparkConf != nil {
 		in, out := &in.SparkConf, &out.SparkConf
-		*out = new(SparkConfPair)
-		**out = **in
-	}
-	if in.SSHPublicKeys != nil {
-		in, out := &in.SSHPublicKeys, &out.SSHPublicKeys
-		*out = make([]string, len(*in))
-		copy(*out, *in)
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
 	}
 	if in.CustomTags != nil {
 		in, out := &in.CustomTags, &out.CustomTags
