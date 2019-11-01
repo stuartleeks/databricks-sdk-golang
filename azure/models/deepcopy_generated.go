@@ -192,8 +192,10 @@ func (in *ClusterInfo) DeepCopyInto(out *ClusterInfo) {
 	}
 	if in.DefaultTags != nil {
 		in, out := &in.DefaultTags, &out.DefaultTags
-		*out = make([]ClusterTag, len(*in))
-		copy(*out, *in)
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
 	}
 	if in.ClusterLogStatus != nil {
 		in, out := &in.ClusterLogStatus, &out.ClusterLogStatus
